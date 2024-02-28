@@ -8,13 +8,13 @@ import { Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
-type HeaderMenuLink = {
+type NavbarMenuLink = {
   label: string;
   href: string;
   icon?: React.ReactNode;
 };
 
-export const menuLinks: HeaderMenuLink[] = [
+export const menuLinks: NavbarMenuLink[] = [
   {
     label: "Home",
     href: "/",
@@ -26,7 +26,7 @@ export const menuLinks: HeaderMenuLink[] = [
   },
 ];
 
-export const HeaderMenuLinks = () => {
+export const NavbarMenuLinks = () => {
   const pathname = usePathname();
 
   return (
@@ -53,9 +53,9 @@ export const HeaderMenuLinks = () => {
 };
 
 /**
- * Site header
+ * Site Navbar
  */
-export const Header = () => {
+export const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const burgerMenuRef = useRef<HTMLDivElement>(null);
   useOutsideClick(
@@ -84,7 +84,7 @@ export const Header = () => {
                 setIsDrawerOpen(false);
               }}
             >
-              <HeaderMenuLinks />
+              <NavbarMenuLinks />
             </ul>
           )}
         </div>
@@ -98,7 +98,7 @@ export const Header = () => {
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
-          <HeaderMenuLinks />
+          <NavbarMenuLinks />
         </ul>
       </div>
       <div className="navbar-end flex-grow mr-4">
