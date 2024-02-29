@@ -33,7 +33,9 @@
     "usehooks-ts": "^2.13.0",
     "viem": "1.19.9",
     "wagmi": "1.4.12",
-    "zustand": "^4.1.2"
+    "zustand": "^4.1.2",
+    "@metamask/sdk": "^0.15.0",
+    "@metamask/sdk-react-ui": "^0.15.0"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",

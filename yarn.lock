@@ -33,6 +33,46 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@arbitrum/nitro-contracts@npm:1.1.1":
+  version: 1.1.1
+  resolution: "@arbitrum/nitro-contracts@npm:1.1.1"
+  dependencies:
+    "@offchainlabs/upgrade-executor": 1.1.0-beta.0
+    "@openzeppelin/contracts": 4.5.0
+    "@openzeppelin/contracts-upgradeable": 4.5.2
+    patch-package: ^6.4.7
+  checksum: 3e457098b5b0e70fc7444d2a1cf4471868301c0511deef67c4947f6cb63367766744ddb7b46239cb65d58d9f3ad08818089a243067c1b7dd207b1293060cc843
+  languageName: node
+  linkType: hard
+
+"@arbitrum/nitro-contracts@npm:^1.0.0-beta.8":
+  version: 1.2.1
+  resolution: "@arbitrum/nitro-contracts@npm:1.2.1"
+  dependencies:
+    "@offchainlabs/upgrade-executor": 1.1.0-beta.0
+    "@openzeppelin/contracts": 4.5.0
+    "@openzeppelin/contracts-upgradeable": 4.5.2
+    patch-package: ^6.4.7
+  checksum: 294c227c523a68a2a2cd5bb9265dcaed67d6121eddb4828941603f7e1ebdea458936735a0ae7c65f66a5a889ad970a55bd7d1b5cb83167dee5cb4cc36488f9d8
+  languageName: node
+  linkType: hard
+
+"@arbitrum/token-bridge-contracts@npm:1.1.2":
+  version: 1.1.2
+  resolution: "@arbitrum/token-bridge-contracts@npm:1.1.2"
+  dependencies:
+    "@arbitrum/nitro-contracts": ^1.0.0-beta.8
+    "@offchainlabs/upgrade-executor": 1.1.0-beta.0
+    "@openzeppelin/contracts": 4.8.3
+    "@openzeppelin/contracts-upgradeable": 4.8.3
+    "@openzeppelin/upgrades-core": ^1.24.1
+  dependenciesMeta:
+    "@openzeppelin/upgrades-core":
+      optional: true
+  checksum: 526aafb541df793635c30a9a0a2b358274f450e2ccbb15eb0df52279f4fa845c3ba1511b886e21f1eba52baeb262c9e27e66ba8aca977a2461ddfe854aa799c7
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.22.13, @babel/code-frame@npm:^7.23.5":
   version: 7.23.5
   resolution: "@babel/code-frame@npm:7.23.5"
@@ -203,7 +243,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chainlink/contracts@npm:^0.8.0":
+"@chainlink/contracts-ccip@npm:^1.2.1":
+  version: 1.4.0
+  resolution: "@chainlink/contracts-ccip@npm:1.4.0"
+  dependencies:
+    "@arbitrum/nitro-contracts": 1.1.1
+    "@arbitrum/token-bridge-contracts": 1.1.2
+    "@eth-optimism/contracts": 0.6.0
+    "@openzeppelin/contracts": 4.9.3
+    "@openzeppelin/contracts-upgradeable": 4.9.3
+    "@scroll-tech/contracts": 0.1.0
+  checksum: 5fa59e9883962d3e865b8230dae1f90d19c840a6123841b57f371e1f6ea14f272279e15557a5ff14a4a702cba60d04dab073b20854b6880a1d5a8d58108014dc
+  languageName: node
+  linkType: hard
+
+"@chainlink/contracts@npm:0.8":
   version: 0.8.0
   resolution: "@chainlink/contracts@npm:0.8.0"
   dependencies:
@@ -472,6 +526,19 @@ __metadata:
   version: 8.57.0
   resolution: "@eslint/js@npm:8.57.0"
   checksum: 315dc65b0e9893e2bff139bddace7ea601ad77ed47b4550e73da8c9c2d2766c7a575c3cddf17ef85b8fd6a36ff34f91729d0dcca56e73ca887c10df91a41b0bb
+  languageName: node
+  linkType: hard
+
+"@eth-optimism/contracts@npm:0.6.0":
+  version: 0.6.0
+  resolution: "@eth-optimism/contracts@npm:0.6.0"
+  dependencies:
+    "@eth-optimism/core-utils": 0.12.0
+    "@ethersproject/abstract-provider": ^5.7.0
+    "@ethersproject/abstract-signer": ^5.7.0
+  peerDependencies:
+    ethers: ^5
+  checksum: 52e9a6cc6ad9bf3ab085d3be501fa4c89e48865baa8aee01aff39c2b007b69600304c7e8f8f4e00d67396e48a0dbfe3a260437efd3a4d7216424cece52639870
   languageName: node
   linkType: hard
 
@@ -1976,10 +2043,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@openzeppelin/contracts-upgradeable-4.7.3@npm:@openzeppelin/contracts-upgradeable@v4.7.3":
+"@offchainlabs/upgrade-executor@npm:1.1.0-beta.0":
+  version: 1.1.0-beta.0
+  resolution: "@offchainlabs/upgrade-executor@npm:1.1.0-beta.0"
+  dependencies:
+    "@openzeppelin/contracts": 4.7.3
+    "@openzeppelin/contracts-upgradeable": 4.7.3
+  checksum: b3c27bb2ff3f2ee0d7fbb955e2bc7f1dda29a7a409ea88348e3da627e91bb921b0bc8f8028caa7ecd087fe63f740dfda8fd7ead569eaeff5a282e83df1039bf6
+  languageName: node
+  linkType: hard
+
+"@openzeppelin/contracts-upgradeable-4.7.3@npm:@openzeppelin/contracts-upgradeable@v4.7.3, @openzeppelin/contracts-upgradeable@npm:4.7.3":
   version: 4.7.3
   resolution: "@openzeppelin/contracts-upgradeable@npm:4.7.3"
   checksum: c9ffb40cb847a975d440204fc6a811f43af960050242f707332b984d29bd16dc242ffa0935de61867aeb9e0357fadedb16b09b276deda5e9775582face831021
+  languageName: node
+  linkType: hard
+
+"@openzeppelin/contracts-upgradeable@npm:4.5.2":
+  version: 4.5.2
+  resolution: "@openzeppelin/contracts-upgradeable@npm:4.5.2"
+  checksum: bd6a12eb83d8e3194e0847ffb248a1063668e2bf723afd21066316090de9b02e95af6057086a95fa21b0d09a2ef0ea057459bb5f5645dfff298e59e8c3267692
+  languageName: node
+  linkType: hard
+
+"@openzeppelin/contracts-upgradeable@npm:4.8.3":
+  version: 4.8.3
+  resolution: "@openzeppelin/contracts-upgradeable@npm:4.8.3"
+  checksum: 022c99bac4828980e771ddf3426a58b5a6f27932a1b1ec93dd2ed3f11c89d8e407867b845bedd0660bdd11c683971d566737c10504db8a1f144f61daec8b5ed6
+  languageName: node
+  linkType: hard
+
+"@openzeppelin/contracts-upgradeable@npm:4.9.3":
+  version: 4.9.3
+  resolution: "@openzeppelin/contracts-upgradeable@npm:4.9.3"
+  checksum: bda0240b1d44c913ec5a4e109c622f216c2bbd7b468d210822f75782a5f7fe0609d08bf03b78b253333625e99e507cf2f75212f1de3b274bd9fc64ae967aeec3
   languageName: node
   linkType: hard
 
@@ -1987,6 +2085,34 @@ __metadata:
   version: 3.4.2
   resolution: "@openzeppelin/contracts@npm:3.4.2"
   checksum: 0c90f029fe50a49643588e4c8670dae3bbf31795133a6ddce9bdcbc258486332700bb732287baabf7bf807f39182fe8ea2ffa19aa5caf359b1b9c0f083280748
+  languageName: node
+  linkType: hard
+
+"@openzeppelin/contracts@npm:4.5.0":
+  version: 4.5.0
+  resolution: "@openzeppelin/contracts@npm:4.5.0"
+  checksum: 1c9c5dff041905771d2a83ac29c64dbf0b48603de43f74a34fb1358813d7c7bf259efe2f64e2112b410c5cca7a0b41aaedd882368be5f01a6d50a3ee0740f962
+  languageName: node
+  linkType: hard
+
+"@openzeppelin/contracts@npm:4.7.3":
+  version: 4.7.3
+  resolution: "@openzeppelin/contracts@npm:4.7.3"
+  checksum: 18382fcacf7cfd652f5dd0e70c08f08ea74eaa8ff11e9f9850639ada70198ae01a3f9493d89a52d724f2db394e9616bf6258017804612ba273167cf657fbb073
+  languageName: node
+  linkType: hard
+
+"@openzeppelin/contracts@npm:4.8.3":
+  version: 4.8.3
+  resolution: "@openzeppelin/contracts@npm:4.8.3"
+  checksum: aea130d38d46840c5cbe3adbaa9a7ac645e4bd66ad3f3baf2fa78588c408d1a686170b3408c9e2e5e05530fba22ecdc00d7efb6b27852a8b29f91accbc0af255
+  languageName: node
+  linkType: hard
+
+"@openzeppelin/contracts@npm:4.9.3":
+  version: 4.9.3
+  resolution: "@openzeppelin/contracts@npm:4.9.3"
+  checksum: 4932063e733b35fa7669b9fe2053f69b062366c5c208b0c6cfa1ac451712100c78acff98120c3a4b88d94154c802be05d160d71f37e7d74cadbe150964458838
   languageName: node
   linkType: hard
 
@@ -2001,6 +2127,24 @@ __metadata:
   version: 4.3.3
   resolution: "@openzeppelin/contracts@npm:4.3.3"
   checksum: 73eb23e7acc8531931076d11251629bdc8579c99ef921a3facbd8abf7b860bc214c97a4bd56cd67db7c9d1db837765132640f24987aac8097a13960bb41ca6d1
+  languageName: node
+  linkType: hard
+
+"@openzeppelin/upgrades-core@npm:^1.24.1":
+  version: 1.32.5
+  resolution: "@openzeppelin/upgrades-core@npm:1.32.5"
+  dependencies:
+    cbor: ^9.0.0
+    chalk: ^4.1.0
+    compare-versions: ^6.0.0
+    debug: ^4.1.1
+    ethereumjs-util: ^7.0.3
+    minimist: ^1.2.7
+    proper-lockfile: ^4.1.1
+    solidity-ast: ^0.4.51
+  bin:
+    openzeppelin-upgrades-core: dist/cli/cli.js
+  checksum: dd5daf48a2884e48ac1f80b0ecb0c0289f77cbc422556680e3bb9d031607739442017355684ed4cfb1175718f64fa4c67da3d19e83abd8558f0133e6423e8cec
   languageName: node
   linkType: hard
 
@@ -2241,6 +2385,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@scroll-tech/contracts@npm:0.1.0":
+  version: 0.1.0
+  resolution: "@scroll-tech/contracts@npm:0.1.0"
+  checksum: 61aa3ca76043276dd38dfb2ed67c019fcd1bf42c8b5d33726e6addfa95cad96ba057988cc00572159c47fcdbbad6fbd1da4821c82f512f5a8704f7807820a04b
+  languageName: node
+  linkType: hard
+
 "@scure/base@npm:^1.1.1, @scure/base@npm:^1.1.3, @scure/base@npm:~1.1.0, @scure/base@npm:~1.1.2, @scure/base@npm:~1.1.4":
   version: 1.1.5
   resolution: "@scure/base@npm:1.1.5"
@@ -2315,6 +2466,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@se-2/hardhat@workspace:packages/hardhat"
   dependencies:
+    "@chainlink/contracts": 0.8
+    "@chainlink/contracts-ccip": ^1.2.1
     "@ethersproject/abi": ^5.7.0
     "@ethersproject/providers": ^5.7.1
     "@nomicfoundation/hardhat-chai-matchers": ^2.0.3
@@ -4278,6 +4431,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@yarnpkg/lockfile@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@yarnpkg/lockfile@npm:1.1.0"
+  checksum: 05b881b4866a3546861fee756e6d3812776ea47fa6eb7098f983d6d0eefa02e12b66c3fff931574120f196286a7ad4879ce02743c8bb2be36c6a576c7852083a
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:1":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
@@ -4712,6 +4872,19 @@ __metadata:
     es-array-method-boxes-properly: ^1.0.0
     is-string: ^1.0.7
   checksum: 5443cde6ad64596649e5751252b1b2f5242b41052980c2fb2506ba485e3ffd7607e8f6f2f1aefa0cb1cfb9b8623b2b2be103579cb367a161a3426400619b6e73
+  languageName: node
+  linkType: hard
+
+"array.prototype.findlast@npm:^1.2.2":
+  version: 1.2.4
+  resolution: "array.prototype.findlast@npm:1.2.4"
+  dependencies:
+    call-bind: ^1.0.5
+    define-properties: ^1.2.1
+    es-abstract: ^1.22.3
+    es-errors: ^1.3.0
+    es-shim-unscopables: ^1.0.2
+  checksum: b4c76571adf6c3cffbbbb8acd7ac39d94af6b120dd388dcf44637c22d77ba3ae13dd43d1be25d90956848fae5a01191fbdebe48ce4c0aa0989d7ee269a94a5a4
   languageName: node
   linkType: hard
 
@@ -5409,6 +5582,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cbor@npm:^9.0.0":
+  version: 9.0.2
+  resolution: "cbor@npm:9.0.2"
+  dependencies:
+    nofilter: ^3.1.0
+  checksum: 925edae7bf964be5a26dba1b7ba6311ac12b6a66234dc958958997a0576cdc740632dc19852a5b84d8a75101936bea1fe122dc22539d6e11f4539c731853ba2e
+  languageName: node
+  linkType: hard
+
 "chai-as-promised@npm:^7.1.1":
   version: 7.1.1
   resolution: "chai-as-promised@npm:7.1.1"
@@ -5825,6 +6007,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"compare-versions@npm:^6.0.0":
+  version: 6.1.0
+  resolution: "compare-versions@npm:6.1.0"
+  checksum: d4e2a45706a023d8d0b6680338b66b79e20bd02d1947f0ac6531dab634cbed89fa373b3f03d503c5e489761194258d6e1bae67a07f88b1efc61648454f2d47e7
+  languageName: node
+  linkType: hard
+
 "concat-map@npm:0.0.1":
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
@@ -5990,6 +6179,19 @@ __metadata:
   dependencies:
     node-fetch: ^2.6.12
   checksum: ecca4f37ffa0e8283e7a8a590926b66713a7ef7892757aa36c2d20ffa27b0ac5c60dcf453119c809abe5923fc0bae3702a4d896bfb406ef1077b0d0018213e24
+  languageName: node
+  linkType: hard
+
+"cross-spawn@npm:^6.0.5":
+  version: 6.0.5
+  resolution: "cross-spawn@npm:6.0.5"
+  dependencies:
+    nice-try: ^1.0.4
+    path-key: ^2.0.1
+    semver: ^5.5.0
+    shebang-command: ^1.2.0
+    which: ^1.2.9
+  checksum: f893bb0d96cd3d5751d04e67145bdddf25f99449531a72e82dcbbd42796bbc8268c1076c6b3ea51d4d455839902804b94bc45dfb37ecbb32ea8e54a6741c3ab9
   languageName: node
   linkType: hard
 
@@ -7531,7 +7733,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ethereumjs-util@npm:^7.1.4":
+"ethereumjs-util@npm:^7.0.3, ethereumjs-util@npm:^7.1.4":
   version: 7.1.5
   resolution: "ethereumjs-util@npm:7.1.5"
   dependencies:
@@ -7902,6 +8104,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"find-yarn-workspace-root@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "find-yarn-workspace-root@npm:2.0.0"
+  dependencies:
+    micromatch: ^4.0.2
+  checksum: fa5ca8f9d08fe7a54ce7c0a5931ff9b7e36f9ee7b9475fb13752bcea80ec6b5f180fa5102d60b376d5526ce924ea3fc6b19301262efa0a5d248dd710f3644242
+  languageName: node
+  linkType: hard
+
 "flat-cache@npm:^3.0.4":
   version: 3.2.0
   resolution: "flat-cache@npm:3.2.0"
@@ -8074,7 +8285,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-extra@npm:^9.1.0":
+"fs-extra@npm:^9.0.0, fs-extra@npm:^9.1.0":
   version: 9.1.0
   resolution: "fs-extra@npm:9.1.0"
   dependencies:
@@ -8528,7 +8739,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.1.9, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.11, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
+"graceful-fs@npm:^4.1.11, graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.1.9, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.11, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
   version: 4.2.11
   resolution: "graceful-fs@npm:4.2.11"
   checksum: ac85f94da92d8eb6b7f5a8b20ce65e43d66761c55ce85ac96df6865308390da45a8d3f0296dd3a663de65d30ba497bd46c696cc1e248c72b13d6d567138a4fc7
@@ -9263,6 +9474,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-ci@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "is-ci@npm:2.0.0"
+  dependencies:
+    ci-info: ^2.0.0
+  bin:
+    is-ci: bin.js
+  checksum: 77b869057510f3efa439bbb36e9be429d53b3f51abd4776eeea79ab3b221337fe1753d1e50058a9e2c650d38246108beffb15ccfd443929d77748d8c0cc90144
+  languageName: node
+  linkType: hard
+
 "is-core-module@npm:^2.11.0, is-core-module@npm:^2.13.0, is-core-module@npm:^2.13.1":
   version: 2.13.1
   resolution: "is-core-module@npm:2.13.1"
@@ -9537,7 +9759,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-wsl@npm:^2.2.0":
+"is-wsl@npm:^2.1.1, is-wsl@npm:^2.2.0":
   version: 2.2.0
   resolution: "is-wsl@npm:2.2.0"
   dependencies:
@@ -9910,6 +10132,15 @@ __metadata:
   version: 6.0.3
   resolution: "kind-of@npm:6.0.3"
   checksum: 3ab01e7b1d440b22fe4c31f23d8d38b4d9b91d9f291df683476576493d5dfd2e03848a8b05813dd0c3f0e835bc63f433007ddeceb71f05cb25c45ae1b19c6d3b
+  languageName: node
+  linkType: hard
+
+"klaw-sync@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "klaw-sync@npm:6.0.0"
+  dependencies:
+    graceful-fs: ^4.1.11
+  checksum: 0da397f8961313c3ef8f79fb63af9002cde5a8fb2aeb1a37351feff0dd6006129c790400c3f5c3b4e757bedcabb13d21ec0a5eaef5a593d59515d4f2c291e475
   languageName: node
   linkType: hard
 
@@ -10585,7 +10816,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimist@npm:^1.2.0, minimist@npm:^1.2.5, minimist@npm:^1.2.6":
+"minimist@npm:^1.2.0, minimist@npm:^1.2.5, minimist@npm:^1.2.6, minimist@npm:^1.2.7":
   version: 1.2.8
   resolution: "minimist@npm:1.2.8"
   checksum: 75a6d645fb122dad29c06a7597bddea977258957ed88d7a6df59b5cd3fe4a527e253e9bbf2e783e4b73657f9098b96a5fe96ab8a113655d4109108577ecf85b0
@@ -10952,6 +11183,13 @@ __metadata:
   bin:
     next: dist/bin/next
   checksum: 077fd76a6fe7127a8be3d11035dcefb2c829f304aaa85144e0d1b531a1549b6c9bb99459af1ef0782c1f1110ca08f6f33efd293a2dc51672dd9dc45ede608ecf
+  languageName: node
+  linkType: hard
+
+"nice-try@npm:^1.0.4":
+  version: 1.0.5
+  resolution: "nice-try@npm:1.0.5"
+  checksum: 0b4af3b5bb5d86c289f7a026303d192a7eb4417231fe47245c460baeabae7277bcd8fd9c728fb6bd62c30b3e15cd6620373e2cf33353b095d8b403d3e8a15aff
   languageName: node
   linkType: hard
 
@@ -11386,6 +11624,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"open@npm:^7.4.2":
+  version: 7.4.2
+  resolution: "open@npm:7.4.2"
+  dependencies:
+    is-docker: ^2.0.0
+    is-wsl: ^2.1.1
+  checksum: 3333900ec0e420d64c23b831bc3467e57031461d843c801f569b2204a1acc3cd7b3ec3c7897afc9dde86491dfa289708eb92bba164093d8bd88fb2c231843c91
+  languageName: node
+  linkType: hard
+
 "open@npm:^8.4.0":
   version: 8.4.2
   resolution: "open@npm:8.4.2"
@@ -11585,6 +11833,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"patch-package@npm:^6.4.7":
+  version: 6.5.1
+  resolution: "patch-package@npm:6.5.1"
+  dependencies:
+    "@yarnpkg/lockfile": ^1.1.0
+    chalk: ^4.1.2
+    cross-spawn: ^6.0.5
+    find-yarn-workspace-root: ^2.0.0
+    fs-extra: ^9.0.0
+    is-ci: ^2.0.0
+    klaw-sync: ^6.0.0
+    minimist: ^1.2.6
+    open: ^7.4.2
+    rimraf: ^2.6.3
+    semver: ^5.6.0
+    slash: ^2.0.0
+    tmp: ^0.0.33
+    yaml: ^1.10.2
+  bin:
+    patch-package: index.js
+  checksum: 8530ffa30f11136b527c6eddf6da48fa12856ee510a47edb1f9cdf8a025636adb82968f5fae778b5e04ce8c87915ebdf5911422b54add59a5a42e372a8f30eb2
+  languageName: node
+  linkType: hard
+
 "path-browserify@npm:^1.0.1":
   version: 1.0.1
   resolution: "path-browserify@npm:1.0.1"
@@ -11610,6 +11882,13 @@ __metadata:
   version: 1.0.1
   resolution: "path-is-absolute@npm:1.0.1"
   checksum: 060840f92cf8effa293bcc1bea81281bd7d363731d214cbe5c227df207c34cd727430f70c6037b5159c8a870b9157cba65e775446b0ab06fd5ecc7e54615a3b8
+  languageName: node
+  linkType: hard
+
+"path-key@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "path-key@npm:2.0.1"
+  checksum: f7ab0ad42fe3fb8c7f11d0c4f849871e28fbd8e1add65c370e422512fc5887097b9cf34d09c1747d45c942a8c1e26468d6356e2df3f740bf177ab8ca7301ebfd
   languageName: node
   linkType: hard
 
@@ -12055,6 +12334,17 @@ __metadata:
     object-assign: ^4.1.1
     react-is: ^16.13.1
   checksum: c056d3f1c057cb7ff8344c645450e14f088a915d078dcda795041765047fa080d38e5d626560ccaac94a4e16e3aa15f3557c1a9a8d1174530955e992c675e459
+  languageName: node
+  linkType: hard
+
+"proper-lockfile@npm:^4.1.1":
+  version: 4.1.2
+  resolution: "proper-lockfile@npm:4.1.2"
+  dependencies:
+    graceful-fs: ^4.2.4
+    retry: ^0.12.0
+    signal-exit: ^3.0.2
+  checksum: 00078ee6a61c216a56a6140c7d2a98c6c733b3678503002dc073ab8beca5d50ca271de4c85fca13b9b8ee2ff546c36674d1850509b84a04a5d0363bcb8638939
   languageName: node
   linkType: hard
 
@@ -12765,7 +13055,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rimraf@npm:^2.2.8":
+"rimraf@npm:^2.2.8, rimraf@npm:^2.6.3":
   version: 2.7.1
   resolution: "rimraf@npm:2.7.1"
   dependencies:
@@ -12982,7 +13272,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "se-2@workspace:."
   dependencies:
-    "@chainlink/contracts": ^0.8.0
     "@metamask/sdk": ^0.15.0
     "@metamask/sdk-react-ui": ^0.15.0
     husky: ^8.0.1
@@ -13034,7 +13323,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^5.5.0":
+"semver@npm:^5.5.0, semver@npm:^5.6.0":
   version: 5.7.2
   resolution: "semver@npm:5.7.2"
   bin:
@@ -13148,12 +13437,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"shebang-command@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "shebang-command@npm:1.2.0"
+  dependencies:
+    shebang-regex: ^1.0.0
+  checksum: 9eed1750301e622961ba5d588af2212505e96770ec376a37ab678f965795e995ade7ed44910f5d3d3cb5e10165a1847f52d3348c64e146b8be922f7707958908
+  languageName: node
+  linkType: hard
+
 "shebang-command@npm:^2.0.0":
   version: 2.0.0
   resolution: "shebang-command@npm:2.0.0"
   dependencies:
     shebang-regex: ^3.0.0
   checksum: 6b52fe87271c12968f6a054e60f6bde5f0f3d2db483a1e5c3e12d657c488a15474121a1d55cd958f6df026a54374ec38a4a963988c213b7570e1d51575cea7fa
+  languageName: node
+  linkType: hard
+
+"shebang-regex@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "shebang-regex@npm:1.0.0"
+  checksum: 404c5a752cd40f94591dfd9346da40a735a05139dac890ffc229afba610854d8799aaa52f87f7e0c94c5007f2c6af55bdcaeb584b56691926c5eaf41dc8f1372
   languageName: node
   linkType: hard
 
@@ -13207,6 +13512,13 @@ __metadata:
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
   checksum: 64c757b498cb8629ffa5f75485340594d2f8189e9b08700e69199069c8e3070fb3e255f7ab873c05dc0b3cec412aea7402e10a5990cb6a050bd33ba062a6c549
+  languageName: node
+  linkType: hard
+
+"slash@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "slash@npm:2.0.0"
+  checksum: 512d4350735375bd11647233cb0e2f93beca6f53441015eea241fe784d8068281c3987fbaa93e7ef1c38df68d9c60013045c92837423c69115297d6169aa85e6
   languageName: node
   linkType: hard
 
@@ -13304,6 +13616,15 @@ __metadata:
   bin:
     solcjs: solcjs
   checksum: 2d8eb16c6d8f648213c94dc8d977cffe5099cba7d41c82d92d769ef71ae8320a985065ce3d6c306440a85f8e8d2b27fb30bdd3ac38f69e5c1fa0ab8a3fb2f217
+  languageName: node
+  linkType: hard
+
+"solidity-ast@npm:^0.4.51":
+  version: 0.4.55
+  resolution: "solidity-ast@npm:0.4.55"
+  dependencies:
+    array.prototype.findlast: ^1.2.2
+  checksum: a33f50b48039ca6a980eeb5d2e55a32d93c48bacbe33494faad8d50262f734cdb5c10b6d01d8bda289e702e0f9d144dd120fca1aa954c5390be8300a74a48af6
   languageName: node
   linkType: hard
 
@@ -14005,7 +14326,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tmp@npm:0.0.33":
+"tmp@npm:0.0.33, tmp@npm:^0.0.33":
   version: 0.0.33
   resolution: "tmp@npm:0.0.33"
   dependencies:
@@ -15059,7 +15380,7 @@ viem@latest:
   languageName: node
   linkType: hard
 
-"which@npm:^1.1.1, which@npm:^1.3.1":
+"which@npm:^1.1.1, which@npm:^1.2.9, which@npm:^1.3.1":
   version: 1.3.1
   resolution: "which@npm:1.3.1"
   dependencies:
@@ -15356,7 +15677,7 @@ viem@latest:
   languageName: node
   linkType: hard
 
-"yaml@npm:^1.10.0":
+"yaml@npm:^1.10.0, yaml@npm:^1.10.2":
   version: 1.10.2
   resolution: "yaml@npm:1.10.2"
   checksum: ce4ada136e8a78a0b08dc10b4b900936912d15de59905b2bf415b4d33c63df1d555d23acb2a41b23cf9fb5da41c256441afca3d6509de7247daa062fd2c5ea5f
