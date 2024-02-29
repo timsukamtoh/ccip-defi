@@ -10,6 +10,7 @@ import { Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
 import { FaucetButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
+//testing
 type NavbarMenuLink = {
   label: string;
   href: string;
@@ -18,16 +19,12 @@ type NavbarMenuLink = {
 
 export const menuLinks: NavbarMenuLink[] = [
   {
-    label: "Dashboard",
+    label: "Home",
     href: "/",
   },
   {
-    label: "Lend",
-    href: "/lend",
-  },
-  {
-    label: "Borrow",
-    href: "/borrow",
+    label: "Borrow and Lend",
+    href: "/borrow-lend",
   },
   {
     label: "Debug Contracts",
