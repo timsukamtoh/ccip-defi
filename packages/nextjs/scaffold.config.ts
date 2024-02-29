@@ -1,4 +1,3 @@
-//import { MetaMaskUIProvider } from "@metamask/sdk-react-ui";
 import * as chains from "viem/chains";
 
 export type ScaffoldConfig = {
