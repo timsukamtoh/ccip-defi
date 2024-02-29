@@ -19,16 +19,12 @@ type NavbarMenuLink = {
 
 export const menuLinks: NavbarMenuLink[] = [
   {
-    label: "Dashboard",
+    label: "Home",
     href: "/",
   },
   {
-    label: "Lend",
-    href: "/lend",
-  },
-  {
-    label: "Borrow",
-    href: "/borrow",
+    label: "Borrow and Lend",
+    href: "/borrow-lend",
   },
   {
     label: "Debug Contracts",
