@@ -36,6 +36,7 @@
     "lint-staged": "^13.0.3"
   },
   "dependencies": {
+    "@chainlink/contracts": "^0.8.0",
     "@metamask/sdk": "^0.15.0",
     "@metamask/sdk-react-ui": "^0.15.0"
   }
