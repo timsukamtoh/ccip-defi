@@ -10,56 +10,44 @@ const Home: NextPage = () => {
   // const { address: connectedAddress } = useAccount();
 
   return (
-    <>
-      <div className="bg-white shadow">
-        {/* Main content */}
-        <div className="border-red-500 bg-gray-200 p-4 justify-between">
-          {/* Tabs */}
-          <div className="border-b border-red-500">
-            <div className="mb-4 flex items-center justify-between rounded-md border-red-500 bg-white p-4 shadow">
-              {/* Container for the tabs with spacing, padding, and shadow */}
-              <div className="flex space-x-4 border-red-500">
-                {/* Container for the individual tabs with spacing */}
-                <button className="border-b-2 border-blue-600 px-4 py-2 font-semibold text-blue-600">Supply</button>
-                <button className="px-4 py-2 text-gray-600 hover:text-gray-800">Borrow</button>
-              </div>
-            </div>
-          </div>
-          {/* Supply content */}
-          <div className="pt-4">
-            {/* Amount input and currency select */}
-            <div className="mb-4 flex space-x-4">
-              <input
-                type="text"
-                // placeholder={0.0}
-                className="form-input block w-full rounded border border-gray-300 px-4 py-3"
-              />
-              <div className="relative">
-                <select className="block w-full appearance-none rounded border border-gray-300 bg-white px-4 py-2 pr-8 leading-tight focus:border-gray-500 focus:outline-none">
-                  <option>USDC</option>
-                  {/* other options */}
-                </select>
-              </div>
-            </div>
-            {/* Rates display */}
-            <div className="rounded bg-gray-100 p-4">
-              <div className="mb-2 flex items-center justify-between">
-                <span className="text-gray-600">Supply APY</span>
-                <span className="font-semibold">3.08%</span>
-              </div>
-              <div className="mb-2 flex items-center justify-between">
-                <span className="text-gray-600">Collateral factor</span>
-                <span className="font-semibold">74.00%</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-600">Distribution APY</span>
-                <span className="font-semibold">0.31%</span>
-              </div>
-            </div>
-          </div>
+    <div className="absolute inset-0 flex flex-col justify-center items-center p-6 gap-6">
+      <div className="flex w-full max-w-md mx-auto justify-between mb-6">
+        <button className="w-1/2 text-center text-xl font-normal text-black hover:ring hover:ring-red-500 rounded font-poppins">
+          Supply
+        </button>
+        <button className="w-1/2 text-center text-xl font-normal text-black hover:ring hover:ring-red-500 font-poppins">
+          Borrow
+        </button>
+      </div>
+      <div className="w-full max-w-md mx-auto flex justify-between gap-4 mb-6">
+        <input
+          type="text"
+          placeholder="0.00"
+          className="w-3/5 text-lg font-normal text-black border border-gray-300 rounded p-4 font-poppins"
+        />
+        <select className="w-2/5 text-xl font-normal text-black border border-gray-300 rounded p-4 font-poppins">
+          <option>USDC</option>
+        </select>
+      </div>
+      <div className="w-full max-w-md mx-auto mb-6">
+        <div className="text-lg font-normal text-black mb-3 font-poppins">Supply rates</div>
+        <div className="flex justify-between">
+          <div className="text-md font-normal text-neutral-500 font-poppins">Supply APY</div>
+          <div className="text-md font-normal text-black font-poppins">3.08%</div>
+        </div>
+        <div className="flex justify-between">
+          <div className="text-md font-normal text-neutral-500 font-poppins">Distribution APY</div>
+          <div className="text-md font-normal text-black font-poppins">0.31%</div>
+        </div>
+        <div className="flex justify-between">
+          <div className="text-md font-normal text-neutral-500 font-poppins">Collateral factor</div>
+          <div className="text-md font-normal text-black font-poppins">74.00%</div>
         </div>
       </div>
-    </>
+      <button className="w-full max-w-xs mx-auto text-xl font-normal text-black bg-lime-400 rounded p-4 shadow font-poppins">
+        Connect Wallet
+      </button>
+    </div>
   );
 };
 

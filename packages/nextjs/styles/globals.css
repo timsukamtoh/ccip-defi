@@ -2,12 +2,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-:root,
+/* :root,
 [data-theme] {
-  background: oklch(var(--b2));
-}
+  background: #faf6f0;
+} */
 
-body {
+/* body {
   min-height: 100vh;
 }
 
@@ -29,4 +29,4 @@ p {
 
 .btn.btn-ghost {
   @apply shadow-none;
-}
+} */
