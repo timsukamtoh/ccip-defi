@@ -2,7 +2,7 @@
 pragma solidity ^0.8.19;
 
 import { OwnerIsCreator } from "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol";
-import { Lending } from "./Lending-new.sol";
+import { Lending } from "./Lending.sol";
 import { MockUSDC } from "./MockUSDC.sol";
 
 /**
@@ -16,8 +16,8 @@ contract Borrowing is OwnerIsCreator {
 
 	mapping(address => mapping(address => uint256)) public borrowings; // debt address => (token => amount)
 
-	constructor(Lending lending) {
-		mLending = lending;
+	constructor(address lendingAddress) {
+		mLending = Lending(lendingAddress);
 	}
 
 	/// called by frontend AFTER determining that user doesn't exceed collatorization ratio across chains
@@ -33,7 +33,6 @@ contract Borrowing is OwnerIsCreator {
 
 	/// deposits into lendings on the current chain
 	function repay(address tokenToRepay, uint256 amount) public {
-		MockUSDC usdc = MockUSDC(tokenToRepay);
 		mLending.lend(tokenToRepay, amount);
 	}
 
