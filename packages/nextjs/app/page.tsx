@@ -135,67 +135,6 @@ const Home: NextPage = () => {
             </div>
           </div>
         )}
-
-        <div className="grid grid-cols-2 gap-2">
-          <div className="text-lg font-semibold ">Source Network</div>
-          <div className="text-mlg font-semibold">Receiving Network</div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4">
-          <select className="form-select rounded-lg text-lg border-2 border-gray-300 p-4 bg-white cursor-pointer text-gray-700">
-            <option>ETHEREUM</option>
-            <option>POLYGON</option>
-            <option>AVALANCHE</option>
-            <option>SOLANA</option>
-          </select>
-          <select className="form-select rounded-lg text-lg border-2 border-gray-300 p-4 bg-white cursor-pointer text-gray-700">
-            <option>ETHEREUM</option>
-            <option>POLYGON</option>
-            <option>AVALANCHE</option>
-            <option>SOLANA</option>
-          </select>
-        </div>
-
-        <div className="flex gap-4 bg-[#E4E3D5] p-3">
-          <input
-            type="text"
-            placeholder="0.00"
-            className="form-input w-3/4 rounded-lg text-lg border-2 border-gray-300 p-4 bg-white"
-          />
-          <select className="form-select w-1/4 rounded-lg text-lg border-2 border-gray-300 p-4 bg-white cursor-pointer">
-            <option>USDC</option>
-            <option>ETH</option>
-            <option>MATIC</option>
-            <option>BTC</option>
-          </select>
-        </div>
-
-        {activeTab === "supply" ? (
-          <>
-            <div className="flex justify-between text-lg">
-              <span>Supply APY</span>
-              <span>3.08%</span>
-            </div>
-            <div className="flex justify-between text-lg">
-              <span>Distribution APY</span>
-              <span>0.31%</span>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="flex justify-between text-lg">
-              <span>Borrow APY</span>
-              <span>3.08%</span>
-            </div>
-            <div className="flex justify-between text-lg">
-              <span>Liquidity Pool</span>
-              <span>0.31%</span>
-            </div>
-          </>
-        )}
-        <button className="btn w-full rounded-lg bg-[#C9FF30] font-bold transition-colors text-xl hover:ring hover:ring-red-500">
-          Deploy
-        </button>
       </div>
     </div>
   );
