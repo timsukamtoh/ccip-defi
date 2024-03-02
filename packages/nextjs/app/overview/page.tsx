@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const OverviewPage = () => {
   // Dummy data for assets
   const assets = [
@@ -72,7 +70,7 @@ const OverviewPage = () => {
             {assets.map((asset, index) => (
               <div key={index} className="grid grid-cols-6 gap-4 py-4 items-center">
                 <div className="col-span-2 flex items-center space-x-2">
-                  <Image src="/ethereum-icon.svg" alt={asset.name} className="w-6 h-6" />
+                  <img src="/ethereum-icon.svg" alt={asset.name} className="w-6 h-6" />
                   <span>{asset.name}</span>
                 </div>
                 <div>{asset.supplyAPY}</div>

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { parseEther } from "viem";
-import { useAccount } from "wagmi";
-import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
+import { useDeployedContractInfo, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
 export function RepayForm() {
-  const { address } = useAccount();
   const [value, setValue] = useState<string>("");
+  const { data: MockUSDCData } = useDeployedContractInfo("MockUSDC");
 
   // Handler function to update the state when the input changes
   const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +16,7 @@ export function RepayForm() {
   const { writeAsync, isLoading } = useScaffoldContractWrite({
     contractName: "Borrowing",
     functionName: "repay",
-    args: [address, parseEther(value)],
+    args: [MockUSDCData?.address, parseEther(value)],
     blockConfirmations: 1,
     onBlockConfirmation: txnReceipt => {
       console.log("Transaction blockHash", txnReceipt.blockHash);
