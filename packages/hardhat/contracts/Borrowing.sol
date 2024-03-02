@@ -54,8 +54,9 @@ contract Borrowing is OwnerIsCreator {
 		);
 		require(amount > 0, "Must repay more than 0");
 
+		bool result = usdc.approve(msg.sender, amount);
 		require(
-			usdc.approve(address(this), amount),
+			result,
 			"Failed to approve spending"
 		);
 
