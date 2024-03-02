@@ -47,12 +47,15 @@ const Home: NextPage = () => {
   }, [selectedContract, setSelectedContract]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#FAF6F0] p-6">
-      <div className="w-full max-w-2xl space-y-6 bg-[#E4E3D5] rounded-2xl p-8 shadow-2xl">
-        <div className="grid grid-cols-2 gap-4">
+    <div className="flex h-auto flex-col items-center justify-center bg-[#FAF6F0] p-10">
+      <div className="w-full space-y-6 bg-[#E4E3D5] rounded-2xl p-8 shadow-2xl">
+        <div className="flex justify-between items-center border-b pb-4">
+          <h1 className="text-3xl font-semibold ">CCIP DEX</h1>
+        </div>
+        <div className="grid grid-cols-2 gap-10 ">
           <button
             onClick={() => setActiveTab("supply")}
-            className={`btn rounded-lg bg-[#C9FF30] font-bold py-3 transition-colors text-xl ${
+            className={`btn bg-white rounded-xl shadow font-bold py-3 p-6 transition-colors text-2xl ${
               activeTab === "supply" ? "ring ring-red-500" : "hover:ring hover:ring-red-500"
             } font-poppins`}
           >
@@ -60,7 +63,7 @@ const Home: NextPage = () => {
           </button>
           <button
             onClick={() => setActiveTab("borrow")}
-            className={`btn rounded-lg bg-[#C9FF30] font-bold py-3 transition-colors text-xl ${
+            className={`btn bg-white rounded-xl shadow  font-bold py-3 transition-colors text-2xl ${
               activeTab === "borrow" ? "ring ring-red-500" : "hover:ring hover:ring-red-500"
             } font-poppins`}
           >
@@ -69,18 +72,18 @@ const Home: NextPage = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-2">
-          <div className="text-md font-semibold ">Source Network</div>
-          <div className="text-md font-semibold">Receiving Network</div>
+          <div className="text-lg font-semibold ">Source Network</div>
+          <div className="text-mlg font-semibold">Receiving Network</div>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <select className="form-select rounded-lg text-md border-2 border-gray-300 p-4 bg-white cursor-pointer text-gray-700">
+          <select className="form-select rounded-lg text-lg border-2 border-gray-300 p-4 bg-white cursor-pointer text-gray-700">
             <option>ETHEREUM</option>
             <option>POLYGON</option>
             <option>AVALANCHE</option>
             <option>SOLANA</option>
           </select>
-          <select className="form-select rounded-lg text-md border-2 border-gray-300 p-4 bg-white cursor-pointer text-gray-700">
+          <select className="form-select rounded-lg text-lg border-2 border-gray-300 p-4 bg-white cursor-pointer text-gray-700">
             <option>ETHEREUM</option>
             <option>POLYGON</option>
             <option>AVALANCHE</option>
@@ -92,9 +95,9 @@ const Home: NextPage = () => {
           <input
             type="text"
             placeholder="0.00"
-            className="form-input w-3/4 rounded-lg text-md border-2 border-gray-300 p-4 bg-white"
+            className="form-input w-3/4 rounded-lg text-lg border-2 border-gray-300 p-4 bg-white"
           />
-          <select className="form-select w-1/4 rounded-lg text-md border-2 border-gray-300 p-4 bg-white cursor-pointer">
+          <select className="form-select w-1/4 rounded-lg text-lg border-2 border-gray-300 p-4 bg-white cursor-pointer">
             <option>USDC</option>
             <option>ETH</option>
             <option>MATIC</option>
