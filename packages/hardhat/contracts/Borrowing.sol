@@ -7,57 +7,37 @@ import { OwnerIsCreator } from "@chainlink/contracts-ccip/src/v0.8/shared/access
 import { Lending } from "./Lending.sol";
 import { MockUSDC } from "./MockUSDC.sol";
 
+/**
+ * Contract for borrower to borrow against their assets on ALL chains they have assets on.
+ */
+
+/// @title - A simple messenger contract for sending/receiving messages and tokens across chains.
+/// Pay using LINK tokens
 contract Borrowing is OwnerIsCreator {
-	MockUSDC public usdc;
+	Lending private _mLending;
 
 	mapping(address => mapping(address => uint256)) public borrowings; // debt address => (token => amount)
 
-	event Borrow(
-		address indexed borrower,
-		address indexed token,
-		uint256 amount
-	);
-	event Repay(
-		address indexed borrower,
-		address indexed token,
-		uint256 amount
-	);
-
-	constructor(address mockUSDCAddress) {
-		usdc = MockUSDC(mockUSDCAddress);
+	constructor(address lendingAddress) {
+		_mLending = Lending(lendingAddress);
 	}
 
-	modifier validAmount(uint256 amount) {
-		require(amount > 0, "Amount must be greater than 0");
-		_;
-	}
-
-	function borrow(
-		address tokenToBorrow,
-		uint256 amountToBorrow
-	) external validAmount(amountToBorrow) {
-		require(
-			borrowings[msg.sender][tokenToBorrow] == 0,
-			"Already borrowing"
-		);
+	/// called by frontend AFTER determining that user doesn't exceed collatorization ratio across chains
+	/// AND that there's enough deposits of tokenToBorrow on the current chain;
+	/// transfers amountToBorrow to caller's wallet if successful
+	function borrow(address tokenToBorrow, uint256 amountToBorrow) public {
+		require(borrowings[msg.sender][tokenToBorrow] == 0, "Already borrowing USDC");
+		MockUSDC usdc = MockUSDC(tokenToBorrow);
 
 		borrowings[msg.sender][tokenToBorrow] += amountToBorrow;
 
-		usdc.transferFrom(address(this), msg.sender, amountToBorrow);
-
-		emit Borrow(msg.sender, tokenToBorrow, amountToBorrow);
+		usdc.transfer(address(msg.sender), amountToBorrow);
 	}
 
-	function repay(
-		address tokenToRepay,
-		uint256 amount
-	) external validAmount(amount) {
-		require(usdc.approve(address(this), amount), "Approval failed");
-
-		usdc.transfer(address(this), amount);
-		borrowings[msg.sender][tokenToRepay] -= amount;
-
-		emit Repay(msg.sender, tokenToRepay, amount);
+	/// deposits into lendings on the current chain
+	function repay(address tokenToRepay, uint256 amount) public {
+		require(amount == borrowings[msg.sender][tokenToRepay], "Must Repay full amount");
+		_mLending.deposit(tokenToRepay, amount);
 	}
 
 	function getBorrowing(address tokenType) external view returns (uint256) {
