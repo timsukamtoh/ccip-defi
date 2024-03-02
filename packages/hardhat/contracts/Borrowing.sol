@@ -24,6 +24,7 @@ contract Borrowing is OwnerIsCreator {
 	/// transfers amountToBorrow to caller's wallet if successful
 	function borrow(address tokenToBorrow, uint256 amountToBorrow) public {
 		require(borrowings[msg.sender][tokenToBorrow] == 0, "Already borrowing USDC");
+
 		usdc = MockUSDC(tokenToBorrow);
 
 		borrowings[msg.sender][tokenToBorrow] += amountToBorrow;
@@ -35,6 +36,7 @@ contract Borrowing is OwnerIsCreator {
 	function repay(address tokenToRepay, uint256 amount) public {
 		require(amount == borrowings[msg.sender][tokenToRepay], "Must Repay full amount");
 		usdc = MockUSDC(tokenToRepay);
+		require(usdc.approve(address(this), amount), "Approval failed");
 
 		borrowings[msg.sender][tokenToRepay] -= amount;
 
