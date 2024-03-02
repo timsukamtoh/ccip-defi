@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     Borrowing: {
-      address: "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      address: "0x4ed7c70F96B99c776995fB64377f0d4aB3B0e1C1",
       abi: [
         {
           inputs: [
@@ -103,7 +103,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     Lending: {
-      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      address: "0x59b670e9fA9D0A427751Af201D676719a970857b",
       abi: [
         {
           inputs: [],
@@ -605,7 +605,7 @@ const deployedContracts = {
       },
     },
     YourContract: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0xc6e7DF5E7b4f2A278906862b61205850344D4e7d",
       abi: [
         {
           inputs: [
@@ -702,6 +702,24 @@ const deployedContracts = {
           type: "function",
         },
         {
+          inputs: [
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "tokenMint",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
           inputs: [],
           name: "totalCounter",
           outputs: [
@@ -709,6 +727,19 @@ const deployedContracts = {
               internalType: "uint256",
               name: "",
               type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "usdcToken",
+          outputs: [
+            {
+              internalType: "contract MockUSDC",
+              name: "",
+              type: "address",
             },
           ],
           stateMutability: "view",
