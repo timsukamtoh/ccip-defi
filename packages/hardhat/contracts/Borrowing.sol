@@ -23,7 +23,10 @@ contract Borrowing is OwnerIsCreator {
 	/// AND that there's enough deposits of tokenToBorrow on the current chain;
 	/// transfers amountToBorrow to caller's wallet if successful
 	function borrow(address tokenToBorrow, uint256 amountToBorrow) public {
-		require(borrowings[msg.sender][tokenToBorrow] == 0, "Already borrowing USDC");
+		require(
+			borrowings[msg.sender][tokenToBorrow] == 0,
+			"Already borrowing USDC"
+		);
 
 		usdc = MockUSDC(tokenToBorrow);
 
@@ -34,17 +37,15 @@ contract Borrowing is OwnerIsCreator {
 
 	/// deposits into lendings on the current chain
 	function repay(address tokenToRepay, uint256 amount) public {
-		require(amount == borrowings[msg.sender][tokenToRepay], "Must Repay full amount");
+		require(
+			amount == borrowings[msg.sender][tokenToRepay],
+			"Must Repay full amount"
+		);
 		usdc = MockUSDC(tokenToRepay);
 		IERC20(usdc).approve(address(this), amount);
 
 		// Transfer the tokens and update the lending mapping
-        	IERC20(usdc).transferFrom(msg.sender,address(this), amount);
+		IERC20(usdc).transferFrom(msg.sender, address(this), amount);
 		borrowings[msg.sender][tokenToRepay] -= amount;
-
-	}
-
-	function getBorrowing(address tokenType) external view returns (uint256) {
-		return borrowings[msg.sender][tokenType];
 	}
 }

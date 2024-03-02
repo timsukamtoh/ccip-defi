@@ -102,25 +102,6 @@ const deployedContracts = {
           type: "function",
         },
         {
-          inputs: [
-            {
-              internalType: "address",
-              name: "tokenType",
-              type: "address",
-            },
-          ],
-          name: "getBorrowing",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
           inputs: [],
           name: "owner",
           outputs: [
@@ -290,25 +271,6 @@ const deployedContracts = {
           name: "deposit",
           outputs: [],
           stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "tokenType",
-              type: "address",
-            },
-          ],
-          name: "getLending",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
           type: "function",
         },
         {
@@ -2231,7 +2193,7 @@ const deployedContracts = {
   },
   421614: {
     Borrowing: {
-      address: "0x634320762E03B052875e32fa627B549Dd1492E7F",
+      address: "0xa5EEF8E0756c10616235f75B69F4978b1184F0b7",
       abi: [
         {
           inputs: [],
@@ -2326,25 +2288,6 @@ const deployedContracts = {
           type: "function",
         },
         {
-          inputs: [
-            {
-              internalType: "address",
-              name: "tokenType",
-              type: "address",
-            },
-          ],
-          name: "getBorrowing",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
           inputs: [],
           name: "owner",
           outputs: [
@@ -2396,7 +2339,7 @@ const deployedContracts = {
       },
     },
     Lending: {
-      address: "0xa1819D7E2E33efcDc4cA706588b5289E68315fb5",
+      address: "0xF3d44815E231Ef3EAfB42556b3d1924267A5545c",
       abi: [
         {
           inputs: [],
@@ -2514,25 +2457,6 @@ const deployedContracts = {
           name: "deposit",
           outputs: [],
           stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "tokenType",
-              type: "address",
-            },
-          ],
-          name: "getLending",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
           type: "function",
         },
         {

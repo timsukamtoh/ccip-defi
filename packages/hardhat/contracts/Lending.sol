@@ -70,8 +70,4 @@ contract Lending is ReentrancyGuard, OwnerIsCreator {
 		// Emitting event
 		emit Withdrawal(msg.sender, tokenToWithdraw, amountToWithdraw);
 	}
-
-	function getLending(address tokenType) public view returns (uint256) {
-		return lendings[msg.sender][tokenType];
-	}
 }
