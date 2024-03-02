@@ -3,6 +3,7 @@ pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
 import { OwnerIsCreator } from "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol";
 import { Lending } from "./Lending.sol";
 import { MockUSDC } from "./MockUSDC.sol";
@@ -53,13 +54,10 @@ contract Borrowing is OwnerIsCreator {
 		);
 		require(amount > 0, "Must repay more than 0");
 
-		// Check if the contract has sufficient allowance
-		if (usdc.allowance(msg.sender, address(this)) < amount) {
-			// Emit event to request approval
-			emit ApprovalNeeded(msg.sender, address(this), amount);
-			// You may also provide instructions on how the user can approve spending
-			revert("Please approve spending in your wallet");
-		}
+		require(
+			usdc.approve(address(this), amount),
+			"Failed to approve spending"
+		);
 
 		// Transfer the tokens and update the lending mapping
 		usdc.transferFrom(msg.sender, address(this), amount);

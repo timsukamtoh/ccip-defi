@@ -29,13 +29,10 @@ contract Lending is ReentrancyGuard, OwnerIsCreator {
 
 		usdc = MockUSDC(tokenToLend);
 
-		// Check if the contract has sufficient allowance
-		if (usdc.allowance(msg.sender, address(this)) < amountToLend) {
-			// Emit event to request approval
-			emit ApprovalNeeded(msg.sender, address(this), amountToLend);
-			// You may also provide instructions on how the user can approve spending
-			revert("Please approve spending in your wallet");
-		}
+		require(
+			usdc.approve(address(this), amountToLend),
+			"Failed to approve spending"
+		);
 
 		// Transfer the tokens and update the lending mapping
 		usdc.transferFrom(msg.sender, address(this), amountToLend);
