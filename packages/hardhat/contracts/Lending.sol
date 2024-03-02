@@ -45,10 +45,10 @@ contract Lending is ReentrancyGuard, OwnerIsCreator {
 		uint256 amount
 	) external validAmount(amount) {
 		usdc = MockUSDC(tokenToLend);
-		require(usdc.approve(address(this), amount), "Approval failed");
+		IERC20(usdc).approve(address(this), amount);
 
 		// Transfer the tokens and update the lending mapping
-		usdc.transfer(address(this), amount);
+        	IERC20(usdc).transferFrom(msg.sender,address(this), amount);
 		lendings[msg.sender][tokenToLend] += amount;
 
 		// Emitting event
