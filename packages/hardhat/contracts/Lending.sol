@@ -15,7 +15,9 @@ contract Lending is OwnerIsCreator {
 
 	/// deposits token to be used as collatoral to borrow on other chains
 	function deposit(address tokenToLend, uint256 amountToLend) public {
+		MockUSDC usdc = MockUSDC(tokenToLend);
 		lendings[address(msg.sender)][tokenToLend] += amountToLend;
+		usdc.transfer(address(this), amountToLend);
 	}
 
 	/// withdraws up to the collatorization ratio across chains
