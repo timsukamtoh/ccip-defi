@@ -3,7 +3,7 @@ pragma solidity >=0.8.0 <0.9.0;
 
 // Useful for debugging. Remove when deploying to a live network.
 import "hardhat/console.sol";
-
+import { MockUSDC } from "./MockUSDC.sol";
 // Use openzeppelin to inherit battle-tested implementations (ERC20, ERC721, etc)
 // import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -28,10 +28,13 @@ contract YourContract {
 		uint256 value
 	);
 
+	MockUSDC public usdcToken;
+
 	// Constructor: Called once on contract deployment
 	// Check packages/hardhat/deploy/00_deploy_your_contract.ts
 	constructor(address _owner) {
 		owner = _owner;
+		usdcToken = new MockUSDC();
 	}
 
 	// Modifier: used to define a set of rules that must be met before or after a function is executed
@@ -40,6 +43,11 @@ contract YourContract {
 		// msg.sender: predefined variable that represents address of the account that called the current function
 		require(msg.sender == owner, "Not the Owner");
 		_;
+	}
+
+
+	function tokenMint(address to, uint256 amount) public {
+		usdcToken.mint(to, amount);
 	}
 
 	/**
