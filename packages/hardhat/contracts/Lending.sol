@@ -31,7 +31,7 @@ contract Lending is OwnerIsCreator {
 	}
 
 	/// returns tokenType amount borrowed
-	function getLending(address tokenType) public view returns (uint256) {
-		return lendings[msg.sender][tokenType];
+	function getLending(address tokenType) public view {
+		lendings[msg.sender][tokenType];
 	}
 }
