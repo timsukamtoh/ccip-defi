@@ -3,7 +3,10 @@
 import { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useLocalStorage } from "usehooks-ts";
+import { BorrowForm } from "~~/components/forms/BorrowForm";
 import { DepositForm } from "~~/components/forms/DepositForm";
+import { RepayForm } from "~~/components/forms/RepayForm";
+import { WithdrawForm } from "~~/components/forms/WithdrawForm";
 import { ContractName } from "~~/utils/scaffold-eth/contract";
 import { getAllContracts } from "~~/utils/scaffold-eth/contractsData";
 
@@ -49,42 +52,51 @@ const Home: NextPage = () => {
         </button>
       </div>
       <div>
-        <div className="w-full max-w-md mx-auto flex justify-between gap-4 mb-6">
-          <DepositForm />
-        </div>
         {/* Conditional rendering based on activeTab */}
         {activeTab === "supply" ? (
           // Supply content
-          <div className="w-full max-w-md mx-auto mb-6">
-            <div className="text-lg font-normal text-black mb-3 font-poppins">Supply rates</div>
-            <div className="flex justify-between">
-              <div className="text-md font-normal text-neutral-500 font-poppins">Supply APY</div>
-              <div className="text-md font-normal text-black font-poppins">3.08%</div>
+          <div>
+            <div className="w-full max-w-md mx-auto flex flex-row justify-between gap-4 mb-6">
+              <DepositForm />
+              <WithdrawForm />
             </div>
-            <div className="flex justify-between">
-              <div className="text-md font-normal text-neutral-500 font-poppins">Distribution APY</div>
-              <div className="text-md font-normal text-black font-poppins">0.31%</div>
-            </div>
-            <div className="flex justify-between">
-              <div className="text-md font-normal text-neutral-500 font-poppins">Collateral factor</div>
-              <div className="text-md font-normal text-black font-poppins">74.00%</div>
+            <div className="w-full max-w-md mx-auto mb-6">
+              <div className="text-lg font-normal text-black mb-3 font-poppins">Supply rates</div>
+              <div className="flex justify-between">
+                <div className="text-md font-normal text-neutral-500 font-poppins">Supply APY</div>
+                <div className="text-md font-normal text-black font-poppins">3.00%</div>
+              </div>
+              <div className="flex justify-between">
+                <div className="text-md font-normal text-neutral-500 font-poppins">Distribution APY</div>
+                <div className="text-md font-normal text-black font-poppins">0.30%</div>
+              </div>
+              <div className="flex justify-between">
+                <div className="text-md font-normal text-neutral-500 font-poppins">Collateral factor</div>
+                <div className="text-md font-normal text-black font-poppins">70.00%</div>
+              </div>
             </div>
           </div>
         ) : (
           // Borrow content
-          <div className="w-full max-w-md mx-auto mb-6">
-            <div className="text-lg font-normal text-black mb-3 font-poppins">Borrow rates</div>
-            <div className="flex justify-between">
-              <div className="text-md font-normal text-neutral-500 font-poppins">Borrow APY</div>
-              <div className="text-md font-normal text-black font-poppins">3.08%</div>
+          <div>
+            <div className="w-full max-w-md mx-auto flex flex-row justify-between gap-4 mb-6">
+              <BorrowForm />
+              <RepayForm />
             </div>
-            <div className="flex justify-between">
-              <div className="text-md font-normal text-neutral-500 font-poppins">Distribution APY</div>
-              <div className="text-md font-normal text-black font-poppins">0.31%</div>
-            </div>
-            <div className="flex justify-between">
-              <div className="text-md font-normal text-neutral-500 font-poppins">Pool liquidity</div>
-              <div className="text-md font-normal text-black font-poppins">40,000 USDC</div>
+            <div className="w-full max-w-md mx-auto mb-6">
+              <div className="text-lg font-normal text-black mb-3 font-poppins">Borrow rates</div>
+              <div className="flex justify-between">
+                <div className="text-md font-normal text-neutral-500 font-poppins">Borrow APR</div>
+                <div className="text-md font-normal text-black font-poppins">5.00%</div>
+              </div>
+              <div className="flex justify-between">
+                <div className="text-md font-normal text-neutral-500 font-poppins">Distribution APR</div>
+                <div className="text-md font-normal text-black font-poppins">0.31%</div>
+              </div>
+              <div className="flex justify-between">
+                <div className="text-md font-normal text-neutral-500 font-poppins">Pool liquidity</div>
+                <div className="text-md font-normal text-black font-poppins">40,000 USDC</div>
+              </div>
             </div>
           </div>
         )}

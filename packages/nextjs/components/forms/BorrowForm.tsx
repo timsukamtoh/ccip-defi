@@ -15,8 +15,8 @@ export function BorrowForm() {
     setValue(inputValue);
   };
   const { writeAsync, isLoading } = useScaffoldContractWrite({
-    contractName: "YourContract",
-    functionName: "tokenMint",
+    contractName: "Borrowing",
+    functionName: "borrow",
     args: [address, parseEther(value)],
     blockConfirmations: 1,
     onBlockConfirmation: txnReceipt => {
@@ -37,7 +37,7 @@ export function BorrowForm() {
 
   return (
     <form onSubmit={submit} className="flex flex-col items-center justify-center space-y-4">
-      <h1 className="text-2xl font-bold">Deposit</h1>
+      <h1 className="text-2xl font-bold">Borrow</h1>
       <input
         type="number"
         step=".01"
@@ -52,7 +52,7 @@ export function BorrowForm() {
         type="submit"
         className="w-full max-w-xs mx-auto text-xl font-normal text-black bg-lime-400 rounded p-4 shadow font-poppins"
       >
-        {isLoading ? "Confirming..." : "Deposit"}
+        {isLoading ? "Confirming..." : "Borrow"}
       </button>
     </form>
   );

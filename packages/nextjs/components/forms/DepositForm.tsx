@@ -15,8 +15,8 @@ export function DepositForm() {
     setValue(inputValue);
   };
   const { writeAsync, isLoading } = useScaffoldContractWrite({
-    contractName: "YourContract",
-    functionName: "tokenMint",
+    contractName: "Lending",
+    functionName: "lend",
     args: [address, parseEther(value)],
     blockConfirmations: 1,
     onBlockConfirmation: txnReceipt => {
