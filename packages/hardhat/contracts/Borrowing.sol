@@ -36,11 +36,12 @@ contract Borrowing is OwnerIsCreator {
 	function repay(address tokenToRepay, uint256 amount) public {
 		require(amount == borrowings[msg.sender][tokenToRepay], "Must Repay full amount");
 		usdc = MockUSDC(tokenToRepay);
-		require(usdc.approve(address(this), amount), "Approval failed");
+		IERC20(usdc).approve(address(this), amount);
 
+		// Transfer the tokens and update the lending mapping
+        	IERC20(usdc).transferFrom(msg.sender,address(this), amount);
 		borrowings[msg.sender][tokenToRepay] -= amount;
 
-		usdc.transfer(address(this), amount);
 	}
 
 	function getBorrowing(address tokenType) external view returns (uint256) {
