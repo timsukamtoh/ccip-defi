@@ -16,7 +16,7 @@ import { MockUSDC } from "./MockUSDC.sol";
 /// Pay using LINK tokens
 contract Borrowing is OwnerIsCreator {
 	Lending private _Lending;
-	IERC20 usdc;
+	MockUSDC usdc;
 	event ApprovalNeeded(
 		address indexed owner,
 		address indexed spender,
@@ -54,7 +54,7 @@ contract Borrowing is OwnerIsCreator {
 		);
 		require(amount > 0, "Must repay more than 0");
 
-		usdc = MockUSDC(tokenToLend);
+		usdc = MockUSDC(tokenToRepay);
 		// Request approval from the user using the permit function
 		usdc.permit(
 			msg.sender,
