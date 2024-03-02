@@ -33,7 +33,7 @@ contract Borrowing is OwnerIsCreator {
 
 	/// deposits into lendings on the current chain
 	function repay(address tokenToRepay, uint256 amount) public {
-		mLending.lend(tokenToRepay, amount);
+		mLending.deposit(tokenToRepay, amount);
 	}
 
 	/// returns tokenType amount borrowed

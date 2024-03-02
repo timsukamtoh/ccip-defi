@@ -9,8 +9,12 @@ contract Lending is OwnerIsCreator {
 
 	constructor() {}
 
+	function getAddress() public view returns (address) {
+		return address(this);
+	}
+
 	/// deposits token to be used as collatoral to borrow on other chains
-	function lend(address tokenToLend, uint256 amountToLend) public {
+	function deposit(address tokenToLend, uint256 amountToLend) public {
 		lendings[address(msg.sender)][tokenToLend] += amountToLend;
 	}
 

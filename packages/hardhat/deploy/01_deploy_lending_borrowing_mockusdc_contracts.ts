@@ -22,7 +22,7 @@ const deployLendingBorrowingContracts: DeployFunction = async function (hre: Har
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
 
-  const lendingDeployed = await deploy("Lending", {
+  await deploy("Lending", {
     from: deployer,
     // Contract constructor arguments
     args: [],
@@ -33,12 +33,15 @@ const deployLendingBorrowingContracts: DeployFunction = async function (hre: Har
   });
 
   // Get the deployed contract to interact with it after deploying.
-  await hre.ethers.getContract<Contract>("Lending", deployer);
+  const lendingContract = await hre.ethers.getContract<Contract>("Lending", deployer);
+
+  const lendingContractAddress = await lendingContract.getAddress();
+  console.log("lendingContract address=" + lendingContractAddress);
 
   await deploy("Borrowing", {
     from: deployer,
     // Contract constructor arguments
-    args: [lendingDeployed.address],
+    args: [lendingContractAddress],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
@@ -47,6 +50,24 @@ const deployLendingBorrowingContracts: DeployFunction = async function (hre: Har
 
   // Get the deployed contract to interact with it after deploying.
   await hre.ethers.getContract<Contract>("Borrowing", deployer);
+
+  await deploy("MockUSDC", {
+    from: deployer,
+    // Contract constructor arguments
+    args: [],
+    log: true,
+    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+    // automatically mining the contract deployment transaction. There is no effect on live networks.
+    autoMine: true,
+  });
+
+  // Get the deployed contract to interact with it after deploying.
+  const mockUsdcContract = await hre.ethers.getContract<Contract>("MockUSDC", deployer);
+
+  const mintTx = await mockUsdcContract.mint(lendingContractAddress, 10000000000);
+  await mintTx.wait();
+
+  console.log("Deployer's address=" + deployer.address); // TODO: fix address
 };
 
 export default deployLendingBorrowingContracts;
