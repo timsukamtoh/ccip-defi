@@ -18,12 +18,12 @@ type NavbarMenuLink = {
 
 export const menuLinks: NavbarMenuLink[] = [
   {
-    label: "Home",
+    label: "Markets",
     href: "/",
   },
   {
-    label: "Borrow and Lend",
-    href: "/borrow-lend",
+    label: "Overview",
+    href: "/overview",
   },
   {
     label: "Debug Contracts",
@@ -99,8 +99,8 @@ export const Navbar = () => {
             <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">Scaffold-ETH</span>
-            <span className="text-xs">Ethereum dev stack</span>
+            <span className="font-bold leading-tight">BRIDGET</span>
+            <span className="text-xs">X-Chain Lending</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">

@@ -1,39 +1,77 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import { OwnerIsCreator } from "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol";
 import { MockUSDC } from "./MockUSDC.sol";
 
-contract Lending {
-	mapping(address => mapping(address => uint256)) public lendings; // depsoit address => (token => amount)
+contract Lending is ReentrancyGuard, OwnerIsCreator {
+	MockUSDC public usdc;
+	mapping(address => mapping(address => uint256)) public lendings; // deposit address => (token => amount)
+
+	event Deposit(
+		address indexed account,
+		address indexed token,
+		uint256 amount
+	);
+	event Withdrawal(
+		address indexed account,
+		address indexed token,
+		uint256 amount
+	);
 
 	constructor() {}
 
-	function getAddress() public view returns (address) {
-		return address(this);
+	modifier validAmount(uint256 amount) {
+		require(amount > 0, "Amount must be greater than 0");
+		_;
 	}
 
-	/// deposits token to be used as collatoral to borrow on other chains
-	function deposit(address tokenToLend, uint256 amountToLend) public {
-		lendings[address(msg.sender)][tokenToLend] += amountToLend;
-
-		MockUSDC usdc = MockUSDC(tokenToLend);
-		usdc.transfer(address(this), amountToLend);
+	modifier hasSufficientBalance(
+		address account,
+		address token,
+		uint256 amount
+	) {
+		require(lendings[account][token] >= amount, "Insufficient balance");
+		_;
 	}
 
-	/// withdraws up to the collatorization ratio across chains
+	function deposit(
+		address tokenToLend,
+		uint256 amount
+	) external validAmount(amount) {
+		usdc = MockUSDC(tokenToLend);
+		require(usdc.approve(address(this), amount), "Approval failed");
+
+		// Transfer the tokens and update the lending mapping
+		usdc.transfer(address(this), amount);
+		lendings[msg.sender][tokenToLend] += amount;
+
+		// Emitting event
+		emit Deposit(msg.sender, tokenToLend, amount);
+	}
+
 	function withdraw(
 		address tokenToWithdraw,
 		uint256 amountToWithdraw
-	) public {
-		MockUSDC usdc = MockUSDC(tokenToWithdraw);
+	)
+		external
+		hasSufficientBalance(msg.sender, tokenToWithdraw, amountToWithdraw)
+	{
+		usdc = MockUSDC(tokenToWithdraw);
+		// Transfer the tokens and update the lending mapping
+		usdc.transferFrom(address(this), msg.sender, amountToWithdraw);
+		lendings[msg.sender][tokenToWithdraw] -= amountToWithdraw;
 
-		lendings[address(msg.sender)][tokenToWithdraw] -= amountToWithdraw;
-
-		usdc.transfer(address(msg.sender), amountToWithdraw);
+		// Emitting event
+		emit Withdrawal(msg.sender, tokenToWithdraw, amountToWithdraw);
 	}
 
-	/// returns tokenType amount borrowed
-	function getLending(address tokenType) public view {
-		lendings[msg.sender][tokenType];
+	function getLending(address tokenType) public view returns (uint256) {
+		return lendings[msg.sender][tokenType];
 	}
 }
