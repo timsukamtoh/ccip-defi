@@ -32,13 +32,10 @@ const deployLendingBorrowingContracts: DeployFunction = async function (hre: Har
     autoMine: true,
   });
 
-  const tokenContract = await hre.ethers.getContract<Contract>("MockUSDC", deployer);
-  const tokenAddress = await tokenContract.getAddress();
-
   await deploy("Lending", {
     from: deployer,
     // Contract constructor arguments
-    args: [tokenAddress],
+    args: [],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
@@ -53,7 +50,7 @@ const deployLendingBorrowingContracts: DeployFunction = async function (hre: Har
   await deploy("Borrowing", {
     from: deployer,
     // Contract constructor arguments
-    args: [tokenAddress],
+    args: [],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.

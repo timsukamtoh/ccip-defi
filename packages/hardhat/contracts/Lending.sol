@@ -24,9 +24,7 @@ contract Lending is ReentrancyGuard, OwnerIsCreator {
 		uint256 amount
 	);
 
-	constructor(address mockUSDCAddress) {
-		usdc = MockUSDC(mockUSDCAddress);
-	}
+	constructor() {}
 
 	modifier validAmount(uint256 amount) {
 		require(amount > 0, "Amount must be greater than 0");
@@ -46,6 +44,7 @@ contract Lending is ReentrancyGuard, OwnerIsCreator {
 		address tokenToLend,
 		uint256 amount
 	) external validAmount(amount) {
+		usdc = MockUSDC(tokenToLend);
 		require(usdc.approve(address(this), amount), "Approval failed");
 
 		// Transfer the tokens and update the lending mapping
@@ -63,6 +62,7 @@ contract Lending is ReentrancyGuard, OwnerIsCreator {
 		external
 		hasSufficientBalance(msg.sender, tokenToWithdraw, amountToWithdraw)
 	{
+		usdc = MockUSDC(tokenToWithdraw);
 		// Transfer the tokens and update the lending mapping
 		usdc.transferFrom(address(this), msg.sender, amountToWithdraw);
 		lendings[msg.sender][tokenToWithdraw] -= amountToWithdraw;
