@@ -1,11 +1,30 @@
 "use client";
 
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { NextPage } from "next";
+import { useLocalStorage } from "usehooks-ts";
+import { DepositForm } from "~~/components/forms/DepositForm";
+import { ContractName } from "~~/utils/scaffold-eth/contract";
+import { getAllContracts } from "~~/utils/scaffold-eth/contractsData";
+
+const selectedContractStorageKey = "scaffoldEth2.selectedContract";
+const contractsData = getAllContracts();
+const contractNames = Object.keys(contractsData) as ContractName[];
 
 const Home: NextPage = () => {
   // State to track the active tab, with 'supply' as the initial state
   const [activeTab, setActiveTab] = useState("supply");
+  const [selectedContract, setSelectedContract] = useLocalStorage<ContractName>(
+    selectedContractStorageKey,
+    contractNames[0],
+    { initializeWithValue: false },
+  );
+
+  useEffect(() => {
+    if (!contractNames.includes(selectedContract)) {
+      setSelectedContract(contractNames[0]);
+    }
+  }, [selectedContract, setSelectedContract]);
 
   return (
     <div className="absolute inset-0 flex flex-col justify-center items-center p-6 gap-6">
@@ -29,58 +48,52 @@ const Home: NextPage = () => {
           Borrow
         </button>
       </div>
+      <div>
+        <div className="w-full max-w-md mx-auto flex justify-between gap-4 mb-6">
+          <DepositForm />
+        </div>
+        {/* Conditional rendering based on activeTab */}
+        {activeTab === "supply" ? (
+          // Supply content
+          <div className="w-full max-w-md mx-auto mb-6">
+            <div className="text-lg font-normal text-black mb-3 font-poppins">Supply rates</div>
+            <div className="flex justify-between">
+              <div className="text-md font-normal text-neutral-500 font-poppins">Supply APY</div>
+              <div className="text-md font-normal text-black font-poppins">3.08%</div>
+            </div>
+            <div className="flex justify-between">
+              <div className="text-md font-normal text-neutral-500 font-poppins">Distribution APY</div>
+              <div className="text-md font-normal text-black font-poppins">0.31%</div>
+            </div>
+            <div className="flex justify-between">
+              <div className="text-md font-normal text-neutral-500 font-poppins">Collateral factor</div>
+              <div className="text-md font-normal text-black font-poppins">74.00%</div>
+            </div>
+          </div>
+        ) : (
+          // Borrow content
+          <div className="w-full max-w-md mx-auto mb-6">
+            <div className="text-lg font-normal text-black mb-3 font-poppins">Borrow rates</div>
+            <div className="flex justify-between">
+              <div className="text-md font-normal text-neutral-500 font-poppins">Borrow APY</div>
+              <div className="text-md font-normal text-black font-poppins">3.08%</div>
+            </div>
+            <div className="flex justify-between">
+              <div className="text-md font-normal text-neutral-500 font-poppins">Distribution APY</div>
+              <div className="text-md font-normal text-black font-poppins">0.31%</div>
+            </div>
+            <div className="flex justify-between">
+              <div className="text-md font-normal text-neutral-500 font-poppins">Pool liquidity</div>
+              <div className="text-md font-normal text-black font-poppins">40,000 USDC</div>
+            </div>
+          </div>
+        )}
 
-      <div className="w-full max-w-md mx-auto flex justify-between gap-4 mb-6">
-        <input
-          type="text"
-          placeholder="0.00"
-          className="w-3/5 text-lg font-normal text-black border border-gray-300 rounded p-4 font-poppins"
-        />
-        <select className="w-2/5 text-xl font-normal text-black border border-gray-300 rounded p-4 font-poppins">
-          <option>USDC</option>
-        </select>
+        {/* Connect Wallet Button */}
+        {/* <button className="w-full max-w-xs mx-auto text-xl font-normal text-black bg-lime-400 rounded p-4 shadow font-poppins">
+          Connect Wallet
+        </button> */}
       </div>
-      {/* Conditional rendering based on activeTab */}
-      {activeTab === "supply" ? (
-        // Supply content
-        <div className="w-full max-w-md mx-auto mb-6">
-          <div className="text-lg font-normal text-black mb-3 font-poppins">Supply rates</div>
-          <div className="flex justify-between">
-            <div className="text-md font-normal text-neutral-500 font-poppins">Supply APY</div>
-            <div className="text-md font-normal text-black font-poppins">3.08%</div>
-          </div>
-          <div className="flex justify-between">
-            <div className="text-md font-normal text-neutral-500 font-poppins">Distribution APY</div>
-            <div className="text-md font-normal text-black font-poppins">0.31%</div>
-          </div>
-          <div className="flex justify-between">
-            <div className="text-md font-normal text-neutral-500 font-poppins">Collateral factor</div>
-            <div className="text-md font-normal text-black font-poppins">74.00%</div>
-          </div>
-        </div>
-      ) : (
-        // Borrow content
-        <div className="w-full max-w-md mx-auto mb-6">
-          <div className="text-lg font-normal text-black mb-3 font-poppins">Borrow rates</div>
-          <div className="flex justify-between">
-            <div className="text-md font-normal text-neutral-500 font-poppins">Borrow APY</div>
-            <div className="text-md font-normal text-black font-poppins">3.08%</div>
-          </div>
-          <div className="flex justify-between">
-            <div className="text-md font-normal text-neutral-500 font-poppins">Distribution APY</div>
-            <div className="text-md font-normal text-black font-poppins">0.31%</div>
-          </div>
-          <div className="flex justify-between">
-            <div className="text-md font-normal text-neutral-500 font-poppins">Pool liquidity</div>
-            <div className="text-md font-normal text-black font-poppins">40,000 USDC</div>
-          </div>
-        </div>
-      )}
-
-      {/* Connect Wallet Button */}
-      <button className="w-full max-w-xs mx-auto text-xl font-normal text-black bg-lime-400 rounded p-4 shadow font-poppins">
-        Connect Wallet
-      </button>
     </div>
   );
 };
