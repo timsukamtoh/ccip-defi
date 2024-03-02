@@ -184,9 +184,9 @@ contract Sender is CCIPReceiver, OwnerIsCreator {
     addressToTokens[sender][token].amount += amount;
   }
 
-  function unstake(address token, uint256 amount) public {
+  function withdraw(address token, uint256 amount) public {
     require(addressToTokens[msg.sender][token].locked != true);
-    require(amount <= addressToTokens[msg.sender][token].amount);
+    require(amount == addressToTokens[msg.sender][token].amount);
     require(amount <= IERC20(token).balanceOf(address(this)));
 
     // transfer token from potocol to sender

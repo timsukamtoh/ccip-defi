@@ -14,7 +14,7 @@ contract Lending {
 
 	/// deposits token to be used as collatoral to borrow on other chains
 	function deposit(address tokenToLend, uint256 amountToLend) public {
-		lendings[msg.sender][tokenToLend] += amountToLend;
+		lendings[address(msg.sender)][tokenToLend] += amountToLend;
 
 		MockUSDC usdc = MockUSDC(tokenToLend);
 		usdc.transfer(address(this), amountToLend);
@@ -33,7 +33,7 @@ contract Lending {
 	}
 
 	/// returns tokenType amount borrowed
-	function getLending(address tokenType) public view returns (uint256) {
-		return lendings[msg.sender][tokenType];
+	function getLending(address tokenType) public view {
+		lendings[msg.sender][tokenType];
 	}
 }
