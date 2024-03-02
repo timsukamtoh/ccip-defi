@@ -86,7 +86,7 @@ const Home: NextPage = () => {
             <div></div>
             <div className="w-50 max-w-md mx-auto flex flex-row justify-between gap-4 mb-6">
               <DepositForm />
-              {Number(userDeposits) >= 0 ? <WithdrawForm /> : <></>}
+              {Number(userDeposits) > 0 && Number(userDebt) == 0 ? <WithdrawForm /> : <></>}
             </div>
             <div className="w-80 max-w-md mx-auto mb-6">
               <div className="text-lg font-normal text-black mb-3 font-poppins">Supply rates</div>
@@ -115,7 +115,8 @@ const Home: NextPage = () => {
             </div>
             <div></div>
             <div className="w-50 max-w-md mx-auto flex flex-row justify-between gap-4 mb-6">
-              {Number(userDebt) == 0 ? <BorrowForm /> : <RepayForm />}
+              {Number(userDebt) == 0 && Number(userDeposits) > 0 ? <BorrowForm /> : <></>}
+              {Number(userDebt) > 0 ? <RepayForm /> : <></>}
             </div>
             <div className="w-80 max-w-md mx-auto mb-6">
               <div className="text-lg font-normal text-black mb-3 font-poppins">Supply rates</div>
