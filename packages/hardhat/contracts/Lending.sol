@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import { OwnerIsCreator } from "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol";
 import { MockUSDC } from "./MockUSDC.sol";
 
-contract Lending is OwnerIsCreator {
+contract Lending {
 	mapping(address => mapping(address => uint256)) public lendings; // depsoit address => (token => amount)
 
 	constructor() {}
@@ -15,7 +14,10 @@ contract Lending is OwnerIsCreator {
 
 	/// deposits token to be used as collatoral to borrow on other chains
 	function deposit(address tokenToLend, uint256 amountToLend) public {
-		lendings[address(msg.sender)][tokenToLend] += amountToLend;
+		lendings[msg.sender][tokenToLend] += amountToLend;
+
+		MockUSDC usdc = MockUSDC(tokenToLend);
+		usdc.transfer(address(this), amountToLend);
 	}
 
 	/// withdraws up to the collatorization ratio across chains

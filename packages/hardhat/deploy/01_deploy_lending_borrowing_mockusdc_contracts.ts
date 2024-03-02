@@ -1,6 +1,7 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { Contract } from "ethers";
+import { Lending } from "../typechain-types/contracts";
 
 /**
  * Deploys a contract named "YourContract" using the deployer account and
@@ -33,7 +34,7 @@ const deployLendingBorrowingContracts: DeployFunction = async function (hre: Har
   });
 
   // Get the deployed contract to interact with it after deploying.
-  const lendingContract = await hre.ethers.getContract<Contract>("Lending", deployer);
+  const lendingContract = await hre.ethers.getContract<Lending>("Lending", deployer);
 
   const lendingContractAddress = await lendingContract.getAddress();
   console.log("lendingContract address=" + lendingContractAddress);
@@ -67,7 +68,7 @@ const deployLendingBorrowingContracts: DeployFunction = async function (hre: Har
   const mintTx = await mockUsdcContract.mint(lendingContractAddress, 10000000000);
   await mintTx.wait();
 
-  console.log("Deployer's address=" + deployer.address); // TODO: fix address
+  console.log("Deployer's address=" + deployer);
 };
 
 export default deployLendingBorrowingContracts;

@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     Borrowing: {
-      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      address: "0x0165878A594ca255338adfa4d48449f69242Eb8F",
       abi: [
         {
           inputs: [
@@ -19,51 +19,6 @@ const deployedContracts = {
           ],
           stateMutability: "nonpayable",
           type: "constructor",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "from",
-              type: "address",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "to",
-              type: "address",
-            },
-          ],
-          name: "OwnershipTransferRequested",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "from",
-              type: "address",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "to",
-              type: "address",
-            },
-          ],
-          name: "OwnershipTransferred",
-          type: "event",
-        },
-        {
-          inputs: [],
-          name: "acceptOwnership",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
         },
         {
           inputs: [
@@ -127,19 +82,6 @@ const deployedContracts = {
           type: "function",
         },
         {
-          inputs: [],
-          name: "owner",
-          outputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
           inputs: [
             {
               internalType: "address",
@@ -157,78 +99,16 @@ const deployedContracts = {
           stateMutability: "nonpayable",
           type: "function",
         },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "to",
-              type: "address",
-            },
-          ],
-          name: "transferOwnership",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
       ],
-      inheritedFunctions: {
-        acceptOwnership: "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol",
-        owner: "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol",
-        transferOwnership: "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol",
-      },
+      inheritedFunctions: {},
     },
     Lending: {
-      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
       abi: [
         {
           inputs: [],
           stateMutability: "nonpayable",
           type: "constructor",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "from",
-              type: "address",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "to",
-              type: "address",
-            },
-          ],
-          name: "OwnershipTransferRequested",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "from",
-              type: "address",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "to",
-              type: "address",
-            },
-          ],
-          name: "OwnershipTransferred",
-          type: "event",
-        },
-        {
-          inputs: [],
-          name: "acceptOwnership",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
         },
         {
           inputs: [
@@ -305,32 +185,6 @@ const deployedContracts = {
           type: "function",
         },
         {
-          inputs: [],
-          name: "owner",
-          outputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "to",
-              type: "address",
-            },
-          ],
-          name: "transferOwnership",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
           inputs: [
             {
               internalType: "address",
@@ -349,11 +203,7 @@ const deployedContracts = {
           type: "function",
         },
       ],
-      inheritedFunctions: {
-        acceptOwnership: "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol",
-        owner: "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol",
-        transferOwnership: "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol",
-      },
+      inheritedFunctions: {},
     },
     MockUSDC: {
       address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",

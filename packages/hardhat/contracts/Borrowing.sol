@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import { OwnerIsCreator } from "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol";
 import { Lending } from "./Lending.sol";
 import { MockUSDC } from "./MockUSDC.sol";
 
@@ -11,7 +10,7 @@ import { MockUSDC } from "./MockUSDC.sol";
 
 /// @title - A simple messenger contract for sending/receiving messages and tokens across chains.
 /// Pay using LINK tokens
-contract Borrowing is OwnerIsCreator {
+contract Borrowing {
 	Lending private mLending;
 
 	mapping(address => mapping(address => uint256)) public borrowings; // debt address => (token => amount)
