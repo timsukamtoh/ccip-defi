@@ -1,33 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NextPage } from "next";
-import { useLocalStorage } from "usehooks-ts";
+// import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 import { BorrowForm } from "~~/components/forms/BorrowForm";
 import { DepositForm } from "~~/components/forms/DepositForm";
 import { RepayForm } from "~~/components/forms/RepayForm";
 import { WithdrawForm } from "~~/components/forms/WithdrawForm";
-import { ContractName } from "~~/utils/scaffold-eth/contract";
-import { getAllContracts } from "~~/utils/scaffold-eth/contractsData";
-
-const selectedContractStorageKey = "scaffoldEth2.selectedContract";
-const contractsData = getAllContracts();
-const contractNames = Object.keys(contractsData) as ContractName[];
 
 const Home: NextPage = () => {
   // State to track the active tab, with 'supply' as the initial state
   const [activeTab, setActiveTab] = useState("supply");
-  const [selectedContract, setSelectedContract] = useLocalStorage<ContractName>(
-    selectedContractStorageKey,
-    contractNames[0],
-    { initializeWithValue: false },
-  );
+  // const [userDeposits, setUserDeposits] = useState<string>("0");
+  // const [userBorrowing, setUserBorrowing] = useState<string>("0");
 
-  useEffect(() => {
-    if (!contractNames.includes(selectedContract)) {
-      setSelectedContract(contractNames[0]);
-    }
-  }, [selectedContract, setSelectedContract]);
+  // useEffect(() => {
+  //   const { data: totalCounter } = useScaffoldContractRead({
+  //     contractName: "YourContract",
+  //     functionName: "userGreetingCounter",
+  //     args: ["0xd8da6bf26964af9d7eed9e03e53415d37aa96045"],
+  //   });
+  //   const { data: totalCounter } = useScaffoldContractRead({
+  //     contractName: "YourContract",
+  //     functionName: "userGreetingCounter",
+  //     args: ["0xd8da6bf26964af9d7eed9e03e53415d37aa96045"],
+  //   });
+
+  // }, [userDeposits, userBorrowing]);
 
   return (
     <div className="absolute inset-0 flex flex-col justify-center items-center m-3 p-9 gap-6">
