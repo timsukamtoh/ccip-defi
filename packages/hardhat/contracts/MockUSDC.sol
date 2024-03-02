@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 contract MockUSDC is ERC20, ERC20Burnable, Ownable, ERC20Permit {
 	constructor() ERC20("MockUSDC", "MKU") Ownable() ERC20Permit("MockUSDC") {}
 
-	function mint(address to, uint256 amount) public onlyOwner {
+	function mint(address to, uint256 amount) public {
 		_mint(to, amount);
 	}
 
