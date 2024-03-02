@@ -28,10 +28,13 @@ contract Lending is ReentrancyGuard, OwnerIsCreator {
 		require(amountToLend > 0, "Must deposit more than 0");
 
 		usdc = MockUSDC(tokenToLend);
-		bool result = usdc.approve(msg.sender, amountToLend);
-		require(
-			result,
-			"Failed to approve spending"
+		// Request approval from the user using the permit function
+		usdc.permit(
+			msg.sender,
+			address(this),
+			amountToLend,
+			type(uint256).max,
+			block.timestamp + 1 weeks
 		);
 
 		// Transfer the tokens and update the lending mapping

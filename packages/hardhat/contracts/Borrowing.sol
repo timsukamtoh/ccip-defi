@@ -54,10 +54,14 @@ contract Borrowing is OwnerIsCreator {
 		);
 		require(amount > 0, "Must repay more than 0");
 
-		bool result = usdc.approve(msg.sender, amount);
-		require(
-			result,
-			"Failed to approve spending"
+		usdc = MockUSDC(tokenToLend);
+		// Request approval from the user using the permit function
+		usdc.permit(
+			msg.sender,
+			address(this),
+			amount,
+			type(uint256).max,
+			block.timestamp + 1 weeks
 		);
 
 		// Transfer the tokens and update the lending mapping
