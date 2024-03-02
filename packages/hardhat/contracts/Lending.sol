@@ -64,7 +64,7 @@ contract Lending is ReentrancyGuard, OwnerIsCreator {
 	{
 		usdc = MockUSDC(tokenToWithdraw);
 		// Transfer the tokens and update the lending mapping
-		usdc.transferFrom(address(this), msg.sender, amountToWithdraw);
+		usdc.transfer(msg.sender, amountToWithdraw);
 		lendings[msg.sender][tokenToWithdraw] -= amountToWithdraw;
 
 		// Emitting event
